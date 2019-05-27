@@ -15,7 +15,7 @@ import { Category } from 'src/app/models/Category';
 export class EditPostComponent implements OnInit {
   postId: number;
   editForm: FormGroup;
-  submitted: boolean = false;
+  submitted = false;
   post: Post;
   categories: Category[];
 
@@ -29,7 +29,7 @@ export class EditPostComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.data.changeTitle("Edit Post")
+    this.data.changeTitle('Edit Post');
 
     this.categoryService.getCategories().subscribe((data: Category[]) => {
       this.categories = data;
@@ -44,7 +44,7 @@ export class EditPostComponent implements OnInit {
 
     this.route.queryParams
       .subscribe(params => {
-        let postId = params['postId'];
+        const postId = params.postId;
         if (!postId) {
           this.router.navigate(['']);
         }
@@ -52,17 +52,17 @@ export class EditPostComponent implements OnInit {
         this.postService.getPost(postId).subscribe( (post: Post) => {
           post.categories = post.categories.map( (category: Category) => {
             return category.id;
-          })
+          });
           this.editForm.patchValue(post);
-        })
+        });
       });
   }
 
-  onSubmit(){
+  onSubmit() {
     this.submitted = true;
-    console.log(this.editForm.value)
-    
-    if(this.editForm.valid){
+    console.log(this.editForm.value);
+
+    if (this.editForm.valid) {
       this.postService.editPost(this.editForm.value)
       .subscribe( data => {
         this.router.navigate(['']);

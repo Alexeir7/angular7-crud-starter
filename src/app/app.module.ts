@@ -8,10 +8,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { PostService } from './post.service';
-import { PostsListsComponent } from './components/posts-lists/posts-lists.component';
-import { AddPostComponent } from './components/add-post/add-post.component';
+import { PostsListsComponent } from './components/posts/posts-lists/posts-lists.component';
+import { AddPostComponent } from './components/posts/add-post/add-post.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EditPostComponent } from './components/edit-post/edit-post.component';
+import { EditPostComponent } from './components/posts/edit-post/edit-post.component';
+import { CategoryListsComponent } from './components/categories/category-lists/category-lists.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EditPostComponent } from './components/edit-post/edit-post.component';
     HomeComponent,
     PostsListsComponent,
     AddPostComponent,
-    EditPostComponent
+    EditPostComponent,
+    CategoryListsComponent
   ],
   imports: [
     BrowserModule,

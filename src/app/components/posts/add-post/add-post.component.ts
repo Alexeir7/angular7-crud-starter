@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { DataService } from 'src/app/data.service';
 import { CategoryService } from 'src/app/category.service';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { PostService } from 'src/app/post.service';
 export class AddPostComponent implements OnInit {
   categories: Category[];
   addForm: FormGroup;
-  submitted: boolean = false;
+  submitted = false;
 
   constructor(
     private data: DataService,
@@ -25,7 +25,7 @@ export class AddPostComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.data.changeTitle("Add Post")
+    this.data.changeTitle('Add Post');
     this.categoryService.getCategories().subscribe((data: Category[]) => {
       this.categories = data;
     });
@@ -38,11 +38,11 @@ export class AddPostComponent implements OnInit {
     });
   }
 
-  onSubmit(){
+  onSubmit() {
     this.submitted = true;
-    console.log(this.addForm.value)
-    
-    if(this.addForm.valid){
+    console.log(this.addForm.value);
+
+    if (this.addForm.valid) {
       this.postService.addPost(this.addForm.value)
       .subscribe( data => {
         this.router.navigate(['']);

@@ -21,11 +21,11 @@ export class PostsListsComponent implements OnInit {
     });
   }
 
-  editPost(postId){
-    this.router.navigate(['/edit-post'], { queryParams: { postId: postId } });
+  editPost(postId: number) {
+    this.router.navigate(['/edit-post'], { queryParams: { postId } });
   }
 
-  deletePost(postId){
+  deletePost(postId: number) {
     this.postService.deletePost(postId).subscribe( () => {
       const postIndex = this.posts.findIndex( (post) => post.id === postId);
       this.posts.splice(postIndex, 1);
