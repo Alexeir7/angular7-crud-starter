@@ -17,13 +17,18 @@ export class LoginComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private formBuilder: FormBuilder,
         private router: Router
-    ) { }
+    ) {
+
+    if (this.authenticationService.currentUserValue) { 
+        this.router.navigate(['/']);
+    }
+
+     }
 
     ngOnInit() {
         this.data.changeTitle('Login');
 
         this.loginForm = this.formBuilder.group({
-            id: [],
             username: ['', Validators.required],
             password: ['', Validators.required],
           });

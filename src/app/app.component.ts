@@ -4,6 +4,7 @@ import { DataService } from './services/data.service';
 import { AuthenticationService } from './services/authentication.service';
 import { User } from './models/User';
 import { Router } from '@angular/router';
+import { Role } from './models/role';
 
 @Component({
   selector: 'app-root',
@@ -18,9 +19,13 @@ export class AppComponent implements OnInit {
     private data: DataService,
     private router: Router,
     private authenticationService: AuthenticationService
-    ) { 
+    ) {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
      }
+
+     get isAdmin() {
+      return this.currentUser && this.currentUser.role === Role.ADMIN;
+  }
 
   ngOnInit() {
     this.data.currentTitle.subscribe(title => this.title = title);

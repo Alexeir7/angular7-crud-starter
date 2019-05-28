@@ -6,6 +6,8 @@ import { EditPostComponent } from './components/posts/edit-post/edit-post.compon
 import { CategoryListsComponent } from './components/categories/category-lists/category-lists.component';
 import { UserListsComponent } from './components/users/user-lists/user-lists.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
+import { Role } from './models/role';
 
 const routes: Routes = [
   {
@@ -14,7 +16,9 @@ const routes: Routes = [
   },
   {
     path: 'add-post',
-    component: AddPostComponent
+    component: AddPostComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.ADMIN] }
   },
   {
     path: 'edit-post',
