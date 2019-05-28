@@ -4,37 +4,29 @@ import { DataService } from 'src/app/services/data.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/models/Category';
-import { PostService } from 'src/app/services/post.service';
 
 @Component({
-  selector: 'app-add-post',
-  templateUrl: './add-post.component.html',
-  styleUrls: ['./add-post.component.scss']
+  selector: 'app-add-category',
+  templateUrl: './add-category.component.html',
+  styleUrls: ['./add-category.component.scss']
 })
-export class AddPostComponent implements OnInit {
-  categories: Category[];
+export class AddCategoryComponent implements OnInit {
   addForm: FormGroup;
   submitted = false;
 
   constructor(
     private data: DataService,
     private categoryService: CategoryService,
-    private postService: PostService,
     private formBuilder: FormBuilder,
     private router: Router,
   ) { }
 
   ngOnInit() {
-    this.data.changeTitle('Add Post');
-    this.categoryService.getCategories().subscribe((data: Category[]) => {
-      this.categories = data;
-    });
+    this.data.changeTitle('Add Category');
 
     this.addForm = this.formBuilder.group({
       id: [],
-      title: ['', Validators.required],
-      text: ['', Validators.required],
-      categories: [[], Validators.required]
+      name: ['', Validators.required]
     });
   }
 
@@ -43,9 +35,9 @@ export class AddPostComponent implements OnInit {
     console.log(this.addForm.value);
 
     if (this.addForm.valid) {
-      this.postService.addPost(this.addForm.value)
+      this.categoryService.addCategory(this.addForm.value)
       .subscribe( data => {
-        this.router.navigate(['/list-posts']);
+        this.router.navigate(['/list-categories']);
       });
     }
   }

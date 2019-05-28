@@ -9,6 +9,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { Role } from './models/role';
 import { PostsListsComponent } from './components/posts/posts-lists/posts-lists.component';
+import { AddCategoryComponent } from './components/categories/add-category/add-category.component';
+import { EditCategoryComponent } from './components/categories/edit-category/edit-category.component';
 
 const routes: Routes = [
   {
@@ -37,6 +39,18 @@ const routes: Routes = [
     path: 'list-categories',
     component: CategoryListsComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'add-category',
+    component: AddCategoryComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.ADMIN, Role.EDITOR] }
+  },
+  {
+    path: 'edit-category',
+    component: EditCategoryComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.ADMIN, Role.EDITOR] }
   },
   {
     path: 'list-users',

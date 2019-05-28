@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     private userService: UserService,
     private authenticationService: AuthenticationService
     ) {
-      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+      this.currentUser = this.authenticationService.currentUserValue;
     }
 
   ngOnInit() {

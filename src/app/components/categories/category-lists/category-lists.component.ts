@@ -44,7 +44,7 @@ export class CategoryListsComponent implements OnInit {
     this.router.navigate(['/edit-category'], { queryParams: { categoryId } });
   }
 
-  deletePost(categoryId: number) {
+  deleteCategory(categoryId: number) {
     this.categoryService.deleteCategory(categoryId).subscribe( () => {
       const categoryIndex = this.categories.findIndex( (category) => category.id === categoryId);
       this.categories.splice(categoryIndex, 1);

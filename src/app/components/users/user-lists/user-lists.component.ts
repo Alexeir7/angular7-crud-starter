@@ -26,4 +26,15 @@ export class UserListsComponent implements OnInit {
     });
   }
 
+  editUser(userId: number){
+    this.router.navigate(['/edit-user'], { queryParams: { userId } });
+  }
+
+  deleteUser(userId: number) {
+    this.userService.getUser(userId).subscribe( () => {
+      const userIndex = this.users.findIndex( (post) => post.id === userId);
+      this.users.splice(userIndex, 1);
+    });
+  }
+
 }
