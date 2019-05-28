@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs/operators';
+
+import { User } from '../../models/User';
+import { AuthenticationService } from '../../services/authentication.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +12,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+    constructor(
+      
+      ) {
+        
+      }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }

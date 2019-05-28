@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Post } from './models/Post';
+import { Post } from '../models/Post';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +15,11 @@ export class PostService {
 
   // return what comes back from this http call
   getPosts() {
-    return this.http.get(`${this.apiUrl}/post`);
+    return this.http.get<Post[]>(`${this.apiUrl}/post`);
   }
 
   getPost(postId: number){
-    return this.http.get(`${this.apiUrl}/post/${postId}`);
+    return this.http.get<Post>(`${this.apiUrl}/post/${postId}`);
   }
 
   addPost(data: any) {

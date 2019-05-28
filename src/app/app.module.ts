@@ -2,17 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
-import { PostService } from './post.service';
+import { PostService } from './services/post.service';
 import { PostsListsComponent } from './components/posts/posts-lists/posts-lists.component';
 import { AddPostComponent } from './components/posts/add-post/add-post.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditPostComponent } from './components/posts/edit-post/edit-post.component';
 import { CategoryListsComponent } from './components/categories/category-lists/category-lists.component';
+import { UserListsComponent } from './components/users/user-lists/user-lists.component';
+import { LoginComponent } from './components/login/login.component';
+import { ErrorInterceptor, JwtInterceptor } from './helpers';
 
 @NgModule({
   declarations: [
@@ -23,15 +26,19 @@ import { CategoryListsComponent } from './components/categories/category-lists/c
     PostsListsComponent,
     AddPostComponent,
     EditPostComponent,
-    CategoryListsComponent
+    CategoryListsComponent,
+    UserListsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     PostService
   ],
   bootstrap: [AppComponent]
