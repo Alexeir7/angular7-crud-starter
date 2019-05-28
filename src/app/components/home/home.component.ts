@@ -20,10 +20,12 @@ export class HomeComponent implements OnInit {
     private data: DataService,
     private userService: UserService,
     private authenticationService: AuthenticationService
-    ) { }
+    ) {
+      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    }
 
   ngOnInit() {
-    this.data.changeTitle('Posts');
+    this.data.changeTitle('Home');
 
     this.userService.getUser(this.currentUser.id).pipe(first()).subscribe(user => {
       this.userFromApi = user;

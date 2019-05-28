@@ -8,29 +8,41 @@ import { UserListsComponent } from './components/users/user-lists/user-lists.com
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { Role } from './models/role';
+import { PostsListsComponent } from './components/posts/posts-lists/posts-lists.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'list-posts',
+    component: PostsListsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'add-post',
     component: AddPostComponent,
     canActivate: [AuthGuard],
-    data: { roles: [Role.ADMIN] }
+    data: { roles: [Role.ADMIN, Role.EDITOR] }
   },
   {
     path: 'edit-post',
-    component: EditPostComponent
+    component: EditPostComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.ADMIN, Role.EDITOR] }
   },
   {
     path: 'list-categories',
-    component: CategoryListsComponent
+    component: CategoryListsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'list-users',
-    component: UserListsComponent
+    component: UserListsComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.ADMIN] }
   },
   {
     path: 'login',

@@ -3,10 +3,24 @@
     <a class="navbar-item" routerLink="">
       <img src="/src/assets/images/labs.svg" />
     </a>
-    <a class="navbar-item" routerLink="">Posts</a>
-    <a class="navbar-item" routerLink="list-categories">Categories</a>
-    <a class="navbar-item" routerLink="list-users">Users</a>
-    <a class="navbar-item" routerLink="login">Login</a>
-    <a class="navbar-item" routerLink="list-categories">SignUp</a>
+    <a *ngIf="currentUser" class="navbar-item" routerLink="list-posts">Posts</a>
+    <a *ngIf="currentUser" class="navbar-item" routerLink="list-categories"
+      >Categories</a
+    >
+    <a
+      *ngIf="currentUser && isAdmin"
+      class="navbar-item"
+      routerLink="list-users"
+      >Users</a
+    >
+    <a *ngIf="!currentUser" class="navbar-item" routerLink="login">Login</a>
+    <a *ngIf="!currentUser" class="navbar-item" routerLink="">Signup</a>
+    <a
+      (click)="logout()"
+      *ngIf="currentUser"
+      class="navbar-item"
+      routerLink="login"
+      >Logout</a
+    >
   </div>
 </nav>

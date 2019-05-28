@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
         private router: Router
     ) {
 
-    if (this.authenticationService.currentUserValue) { 
+    if (this.authenticationService.currentUserValue) {
         this.router.navigate(['/']);
     }
 
@@ -41,6 +41,8 @@ export class LoginComponent implements OnInit {
             this.authenticationService.login(this.loginForm.value)
             .subscribe( data => {
               this.router.navigate(['']);
+
+              window.location.reload();
             });
           }
     }
