@@ -31,10 +31,9 @@ export class UserListsComponent implements OnInit {
   }
 
   deleteUser(userId: number) {
-    this.userService.getUser(userId).subscribe( () => {
-      const userIndex = this.users.findIndex( (post) => post.id === userId);
+    this.userService.deleteUser(userId).subscribe( () => {
+      const userIndex = this.users.findIndex( (user) => user.id === userId);
       this.users.splice(userIndex, 1);
     });
   }
-
 }

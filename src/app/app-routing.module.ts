@@ -11,6 +11,8 @@ import { Role } from './models/role';
 import { PostsListsComponent } from './components/posts/posts-lists/posts-lists.component';
 import { AddCategoryComponent } from './components/categories/add-category/add-category.component';
 import { EditCategoryComponent } from './components/categories/edit-category/edit-category.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { EditUserComponent } from './components/users/edit-user/edit-user.component';
 
 const routes: Routes = [
   {
@@ -59,8 +61,18 @@ const routes: Routes = [
     data: { roles: [Role.ADMIN] }
   },
   {
+    path: 'edit-user',
+    component: EditUserComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.ADMIN] }
+  },
+  {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'signup',
+    component: SignupComponent
   }
 ];
 

@@ -58,5 +58,4 @@ export class EditCategoryComponent implements OnInit {
   }
 
   get f() { return this.editForm.controls; }
-
 }

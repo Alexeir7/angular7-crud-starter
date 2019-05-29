@@ -18,6 +18,8 @@ import { LoginComponent } from './components/login/login.component';
 import { JwtInterceptor } from './helpers';
 import { AddCategoryComponent } from './components/categories/add-category/add-category.component';
 import { EditCategoryComponent } from './components/categories/edit-category/edit-category.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { EditUserComponent } from './components/users/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { EditCategoryComponent } from './components/categories/edit-category/edi
     UserListsComponent,
     LoginComponent,
     AddCategoryComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    SignupComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

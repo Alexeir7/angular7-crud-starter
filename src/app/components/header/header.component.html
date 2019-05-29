@@ -14,7 +14,7 @@
       >Users</a
     >
     <a *ngIf="!currentUser" class="navbar-item" routerLink="login">Login</a>
-    <a *ngIf="!currentUser" class="navbar-item" routerLink="">Signup</a>
+    <a *ngIf="!currentUser" class="navbar-item" routerLink="signup">SignUp</a>
     <a
       (click)="logout()"
       *ngIf="currentUser"
