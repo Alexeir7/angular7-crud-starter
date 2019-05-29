@@ -15,7 +15,7 @@ import { EditPostComponent } from './components/posts/edit-post/edit-post.compon
 import { CategoryListsComponent } from './components/categories/category-lists/category-lists.component';
 import { UserListsComponent } from './components/users/user-lists/user-lists.component';
 import { LoginComponent } from './components/login/login.component';
-import { ErrorInterceptor, JwtInterceptor } from './helpers';
+import { JwtInterceptor } from './helpers';
 import { AddCategoryComponent } from './components/categories/add-category/add-category.component';
 import { EditCategoryComponent } from './components/categories/edit-category/edit-category.component';
 
@@ -42,7 +42,6 @@ import { EditCategoryComponent } from './components/categories/edit-category/edi
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     PostService
   ],
   bootstrap: [AppComponent]
